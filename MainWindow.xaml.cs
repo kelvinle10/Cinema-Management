@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using CinemaManagementSystem.Models;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -19,6 +20,32 @@ namespace CinemaManagementSystem
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void btnLogin_Click(object sender, RoutedEventArgs e)
+        {
+            string username = txtUsername.Text.Trim();
+            string password = txtPassword.Password;
+
+            if (username == "" || password == "")
+            {
+                MessageBox.Show("Please enter username and password!");
+                return;
+            }
+
+            using var db = new DBContext();
+
+            var account = db.Accounts.FirstOrDefault(
+                a => a.Username == username &&
+                     a.Password == password
+            );
+
+            if (account == null)
+            {
+                MessageBox.Show("Invalid username or password!");
+                return;
+            }
+            MessageBox.Show("Login successful! Welcome " + account.FullName);
         }
     }
 }
