@@ -9,9 +9,13 @@ public partial class Seat
 
     public int RoomId { get; set; }
 
-    public string SeatNumber { get; set; } = null!;
+    public string SeatRow { get; set; } = null!;
+
+    public int SeatNumber { get; set; }
 
     public string SeatType { get; set; } = null!;
+
+    public bool IsActive { get; set; }
 
     public virtual Room Room { get; set; } = null!;
 

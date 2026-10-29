@@ -9,9 +9,9 @@ public partial class Room
 
     public string RoomName { get; set; } = null!;
 
-    public string RoomType { get; set; } = null!;
+    public int Capacity { get; set; }
 
-    public string Status { get; set; } = null!;
+    public bool IsActive { get; set; }
 
     public virtual ICollection<Seat> Seats { get; set; } = new List<Seat>();
 

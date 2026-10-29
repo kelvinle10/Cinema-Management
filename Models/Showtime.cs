@@ -15,7 +15,11 @@ public partial class Showtime
 
     public DateTime EndTime { get; set; }
 
+    public decimal TicketPrice { get; set; }
+
     public string Status { get; set; } = null!;
+
+    public virtual ICollection<Booking> Bookings { get; set; } = new List<Booking>();
 
     public virtual Movie Movie { get; set; } = null!;
 

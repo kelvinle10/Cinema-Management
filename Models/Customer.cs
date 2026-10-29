@@ -7,11 +7,15 @@ public partial class Customer
 {
     public int CustomerId { get; set; }
 
-    public string FullName { get; set; } = null!;
+    public int AccountId { get; set; }
+
+    public string Email { get; set; } = null!;
 
     public string? Phone { get; set; }
 
-    public string? Email { get; set; }
+    public DateOnly? DateOfBirth { get; set; }
 
-    public virtual ICollection<Ticket> Tickets { get; set; } = new List<Ticket>();
+    public virtual Account Account { get; set; } = null!;
+
+    public virtual ICollection<Booking> Bookings { get; set; } = new List<Booking>();
 }
