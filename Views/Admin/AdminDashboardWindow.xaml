@@ -1,0 +1,29 @@
+﻿<Window x:Class="CinemaManagementSystem.Views.Admin.AdminDashboardWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CinemaManagementSystem.Views.Admin"
+        mc:Ignorable="d"
+        Title="Admin Dashboard" Height="600" Width="1000"
+        WindowStartupLocation="CenterScreen"
+        Background="#101018">
+    <Grid>
+        <StackPanel VerticalAlignment="Center"
+                    HorizontalAlignment="Center">
+
+            <TextBlock Text="ADMIN DASHBOARD"
+                       FontSize="32"
+                       FontWeight="Bold"
+                       Foreground="#D9A441"
+                       HorizontalAlignment="Center"/>
+
+            <TextBlock Text="Welcome to Cinema Management System"
+                       FontSize="16"
+                       Foreground="White"
+                       Margin="0,15,0,0"
+                       HorizontalAlignment="Center"/>
+
+        </StackPanel>
+    </Grid>
+</Window>

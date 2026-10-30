@@ -1,0 +1,119 @@
+﻿<Window x:Class="CinemaManagementSystem.Views.Auth.LoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CinemaManagementSystem.Views.Auth"
+        mc:Ignorable="d"
+        Title="Cinema Management System" Height="600" Width="950"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        Background="#101018">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1.2*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Left side -->
+        <Grid Grid.Column="0">
+            <StackPanel VerticalAlignment="Center"
+                        HorizontalAlignment="Center">
+                <TextBlock Text="CINEMA"
+                           FontSize="46"
+                           FontWeight="Bold"
+                           Foreground="#D9A441"
+                           HorizontalAlignment="Center"/>
+
+                <TextBlock Text="MANAGEMENT SYSTEM"
+                           FontSize="18"
+                           Foreground="White"
+                           HorizontalAlignment="Center"
+                           Margin="0,5,0,15"/>
+
+                <TextBlock Text="Your Movie, Your Experience"
+                           FontSize="14"
+                           Foreground="#AAAAAA"
+                           HorizontalAlignment="Center"/>
+            </StackPanel>
+        </Grid>
+
+        <!-- Right side -->
+        <Border Grid.Column="1"
+                Background="#1C1C28"
+                CornerRadius="15"
+                Margin="30"
+                Padding="35">
+
+            <StackPanel VerticalAlignment="Center">
+
+                <TextBlock Text="Welcome Back!"
+                           FontSize="28"
+                           FontWeight="Bold"
+                           Foreground="White"
+                           Margin="0,0,0,8"/>
+
+                <TextBlock Text="Sign in to continue"
+                           FontSize="14"
+                           Foreground="#AAAAAA"
+                           Margin="0,0,0,30"/>
+
+                <TextBlock Text="Username or Email"
+                           Foreground="White"
+                           Margin="0,0,0,8"/>
+
+                <TextBox x:Name="txtUsername"
+                         Height="42"
+                         FontSize="14"
+                         Padding="10"
+                         Background="#292938"
+                         Foreground="White"
+                         BorderBrush="#444455"
+                         Margin="0,0,0,20"/>
+
+                <TextBlock Text="Password"
+                           Foreground="White"
+                           Margin="0,0,0,8"/>
+
+                <PasswordBox x:Name="txtPassword"
+                             Height="42"
+                             FontSize="14"
+                             Padding="10"
+                             Background="#292938"
+                             Foreground="White"
+                             BorderBrush="#444455"
+                             Margin="0,0,0,12"/>
+
+                <TextBlock Text="Forgot Password?"
+                           Foreground="#D9A441"
+                           HorizontalAlignment="Right"
+                           Cursor="Hand"
+                           Margin="0,0,0,25"/>
+
+                <Button x:Name="btnLogin"
+                        Content="LOGIN"
+                        Height="45"
+                        FontSize="16"
+                        FontWeight="Bold"
+                        Background="#D9A441"
+                        Foreground="#101018"
+                        BorderThickness="0"
+                        Cursor="Hand"/>
+
+                <StackPanel Orientation="Horizontal"
+                            HorizontalAlignment="Center"
+                            Margin="0,25,0,0">
+
+                    <TextBlock Text="Don't have an account? "
+                               Foreground="#AAAAAA"/>
+
+                    <TextBlock Text="Register"
+                               Foreground="#D9A441"
+                               Cursor="Hand"
+                               FontWeight="Bold"/>
+                </StackPanel>
+
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>
