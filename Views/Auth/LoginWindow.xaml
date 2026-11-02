@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Cinema Management System" Height="600" Width="950"
         WindowStartupLocation="CenterScreen"
-        ResizeMode="NoResize"
+        ResizeMode="CanResize"
         Background="#101018">
     <Grid>
         <Grid.ColumnDefinitions>
@@ -92,6 +92,7 @@
 
                 <Button x:Name="btnLogin"
                         Content="LOGIN"
+                        Click="btnLogin_Click"
                         Height="45"
                         FontSize="16"
                         FontWeight="Bold"
@@ -110,7 +111,8 @@
                     <TextBlock Text="Register"
                                Foreground="#D9A441"
                                Cursor="Hand"
-                               FontWeight="Bold"/>
+                               FontWeight="Bold"
+                               MouseLeftButtonDown="Register_Click"/>
                 </StackPanel>
 
             </StackPanel>

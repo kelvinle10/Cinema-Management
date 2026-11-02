@@ -8,6 +8,9 @@
     <Compile Update="Views\Auth\LoginWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\Auth\RegisterWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\Customer\CustomerHomeWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
