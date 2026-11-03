@@ -141,18 +141,35 @@
                 <DataGridTextColumn Header="Status"
                             Binding="{Binding Status}"
                             Width="120"/>
-                <DataGridTemplateColumn Header="Actions" Width="130">
+                <DataGridTemplateColumn Header="Actions" Width="160">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button Content="Edit"
-                                    Width="65"
-                                    Height="28"
-                                    Background="#D9A441"
-                                    Foreground="#101018"
-                                    FontWeight="Bold"
-                                    BorderThickness="0"
-                                    Cursor="Hand"
-                                    Click="btnEditMovie_Click"/>
+                            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Center">
+
+                                <Button Content="Edit"
+                        Width="55"
+                        Height="28"
+                        Margin="3"
+                        Background="#D9A441"
+                        Foreground="#101018"
+                        FontWeight="Bold"
+                        BorderThickness="0"
+                        Cursor="Hand"
+                        Click="btnEditMovie_Click"/>
+
+                                <Button Content="Delete"
+                        Width="65"
+                        Height="28"
+                        Margin="3"
+                        Background="#C0392B"
+                        Foreground="White"
+                        FontWeight="Bold"
+                        BorderThickness="0"
+                        Cursor="Hand"
+                        Click="btnDeleteMovie_Click"/>
+
+                            </StackPanel>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>

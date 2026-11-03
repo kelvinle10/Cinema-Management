@@ -45,13 +45,57 @@ namespace CinemaManagementSystem.Views.Admin
         }
         private void btnEditMovie_Click(object sender, RoutedEventArgs e)
         {
-            Button button = sender as Button;
-            Movie selectedMovie = button.DataContext as Movie;
+            Button? button = sender as Button;
+            Movie? selectedMovie = button?.DataContext as Movie;
+
+            if (selectedMovie == null)
+            {
+                return;
+            }
 
             EditMovieWindow editWindow = new EditMovieWindow(selectedMovie);
 
             if (editWindow.ShowDialog() == true)
             {
+                LoadMovies();
+            }
+        }
+        private void btnDeleteMovie_Click(object sender, RoutedEventArgs e)
+        {
+            Button? button = sender as Button;
+            Movie? selectedMovie = button?.DataContext as Movie;
+
+            if (selectedMovie == null)
+            {
+                return;
+            }
+
+            MessageBoxResult result = MessageBox.Show(
+                $"Are you sure you want to delete '{selectedMovie.Title}'?",
+                "Confirm Delete",
+                MessageBoxButton.YesNo,
+                MessageBoxImage.Warning);
+
+            if (result == MessageBoxResult.Yes)
+            {
+                using (DBContext db = new DBContext())
+                {
+                    Movie? movie = db.Movies.FirstOrDefault(
+                        m => m.MovieId == selectedMovie.MovieId);
+
+                    if (movie != null)
+                    {
+                        db.Movies.Remove(movie);
+                        db.SaveChanges();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Movie not found!");
+                        return;
+                    }
+                }
+
+                MessageBox.Show("Movie deleted successfully!");
                 LoadMovies();
             }
         }
