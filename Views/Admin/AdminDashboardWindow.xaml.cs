@@ -56,5 +56,12 @@ namespace CinemaManagementSystem.Views.Admin
             roomsWindow.Show();
             this.Close();
         }
+
+        private void btnShowtimes_Click(object sender, RoutedEventArgs e)
+        {
+            ShowtimesWindow showtimesWindow = new ShowtimesWindow();
+            showtimesWindow.Show();
+            this.Close();
+        }
     }
 }

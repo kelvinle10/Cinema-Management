@@ -81,7 +81,8 @@
                             HorizontalContentAlignment="Left"
                             Padding="15,0"
                             BorderThickness="0"
-                            Margin="0,0,0,8"/>
+                            Margin="0,0,0,8"
+                            Click="btnShowtimes_Click"/>
 
                     <Button Content="Bookings"
                             Background="Transparent"

@@ -1,0 +1,257 @@
+﻿<Window x:Class="CinemaManagementSystem.Views.Admin.EditShowtimeWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Add Showtime"
+        Height="750"
+        Width="650"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="CanResize"
+        Background="#101018">
+
+    <Grid Margin="30">
+        <Grid.Resources>
+
+            <!-- TextBox Style -->
+            <Style TargetType="TextBox">
+                <Setter Property="Background" Value="#252535"/>
+                <Setter Property="Foreground" Value="White"/>
+                <Setter Property="BorderBrush" Value="#444455"/>
+                <Setter Property="BorderThickness" Value="1"/>
+                <Setter Property="Padding" Value="10,6"/>
+                <Setter Property="FontSize" Value="13"/>
+                <Setter Property="CaretBrush" Value="#D9A441"/>
+            </Style>
+
+            <!-- ComboBox Style -->
+            <Style TargetType="{x:Type ComboBox}">
+                <Setter Property="Background" Value="#252535"/>
+                <Setter Property="Foreground" Value="White"/>
+                <Setter Property="BorderBrush" Value="#444455"/>
+                <Setter Property="BorderThickness" Value="1"/>
+                <Setter Property="FontSize" Value="13"/>
+                <Setter Property="Height" Value="35"/>
+                <Setter Property="Padding" Value="8,4"/>
+
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type ComboBox}">
+                            <Grid>
+                                <ToggleButton
+                                    x:Name="ToggleButton"
+                                    Background="{TemplateBinding Background}"
+                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                    BorderThickness="{TemplateBinding BorderThickness}"
+                                    Focusable="False"
+                                    IsChecked="{Binding IsDropDownOpen,
+                                        Mode=TwoWay,
+                                        RelativeSource={RelativeSource TemplatedParent}}">
+
+                                    <ToggleButton.Template>
+                                        <ControlTemplate TargetType="ToggleButton">
+                                            <Border Background="{TemplateBinding Background}"
+                                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                                    BorderThickness="{TemplateBinding BorderThickness}"
+                                                    CornerRadius="4">
+                                                <Grid>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="*"/>
+                                                        <ColumnDefinition Width="30"/>
+                                                    </Grid.ColumnDefinitions>
+
+                                                    <Path Grid.Column="1"
+                                                          Data="M 0 0 L 4 4 L 8 0"
+                                                          Stroke="#D9A441"
+                                                          StrokeThickness="1.5"
+                                                          HorizontalAlignment="Center"
+                                                          VerticalAlignment="Center"/>
+                                                </Grid>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </ToggleButton.Template>
+                                </ToggleButton>
+
+                                <ContentPresenter
+                                    Margin="10,0,35,0"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Left"
+                                    Content="{TemplateBinding SelectionBoxItem}"
+                                    ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
+                                    IsHitTestVisible="False"/>
+
+                                <Popup x:Name="Popup"
+                                       Placement="Bottom"
+                                       PlacementTarget="{Binding ElementName=ToggleButton}"
+                                       IsOpen="{TemplateBinding IsDropDownOpen}"
+                                       AllowsTransparency="True"
+                                       Focusable="False"
+                                       PopupAnimation="Fade">
+
+                                    <Border MinWidth="{TemplateBinding ActualWidth}"
+                                            Background="#252535"
+                                            BorderBrush="#444455"
+                                            BorderThickness="1">
+
+                                        <ScrollViewer MaxHeight="200"
+                                                      VerticalScrollBarVisibility="Auto"
+                                                      HorizontalScrollBarVisibility="Disabled">
+                                            <ItemsPresenter/>
+                                        </ScrollViewer>
+                                    </Border>
+                                </Popup>
+                            </Grid>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <!-- ComboBox Item Style -->
+            <Style TargetType="ComboBoxItem">
+                <Setter Property="Background" Value="#252535"/>
+                <Setter Property="Foreground" Value="White"/>
+                <Setter Property="Padding" Value="8,6"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="ComboBoxItem">
+                            <Border x:Name="ItemBorder"
+                                    Background="{TemplateBinding Background}"
+                                    Padding="{TemplateBinding Padding}">
+                                <ContentPresenter/>
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsHighlighted" Value="True">
+                                    <Setter TargetName="ItemBorder"
+                                            Property="Background"
+                                            Value="#444455"/>
+                                </Trigger>
+                                <Trigger Property="IsSelected" Value="True">
+                                    <Setter TargetName="ItemBorder"
+                                            Property="Background"
+                                            Value="#302C35"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <!-- DatePicker Style -->
+            <Style TargetType="{x:Type DatePicker}">
+                <Setter Property="Background" Value="#252535"/>
+                <Setter Property="Foreground" Value="White"/>
+                <Setter Property="BorderBrush" Value="#444455"/>
+                <Setter Property="BorderThickness" Value="1"/>
+                <Setter Property="FontSize" Value="13"/>
+                <Setter Property="Height" Value="40"/>
+                <Setter Property="VerticalContentAlignment" Value="Center"/>
+            </Style>
+
+            <Style TargetType="{x:Type DatePickerTextBox}">
+                <Setter Property="Background" Value="#252535"/>
+                <Setter Property="Foreground" Value="White"/>
+                <Setter Property="BorderBrush" Value="#444455"/>
+                <Setter Property="CaretBrush" Value="#D9A441"/>
+                <Setter Property="FontSize" Value="13"/>
+                <Setter Property="Padding" Value="5,0"/>
+                <Setter Property="VerticalContentAlignment" Value="Center"/>
+                <Setter Property="Height" Value="30"/>
+            </Style>
+
+        </Grid.Resources>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <StackPanel Grid.Row="0" Margin="0,0,0,20">
+            <TextBlock Text="Edit Showtime"
+                       FontSize="26"
+                       FontWeight="Bold"
+                       Foreground="#D9A441"/>
+
+            <TextBlock Text="Update showtime information"
+                       Foreground="#AAAAAA"
+                       Margin="0,5,0,0"/>
+        </StackPanel>
+
+        <!-- Form -->
+        <ScrollViewer Grid.Row="1"
+                      VerticalScrollBarVisibility="Auto">
+            <StackPanel>
+
+                <TextBlock Text="Movie" Foreground="White"/>
+                <ComboBox x:Name="cbMovie"
+                          Margin="0,6,0,15"/>
+
+                <TextBlock Text="Room" Foreground="White"/>
+                <ComboBox x:Name="cbRoom"
+                          Margin="0,6,0,15"/>
+
+                <TextBlock Text="Start Date" Foreground="White"/>
+                <DatePicker x:Name="dpStartDate"
+                            Margin="0,6,0,10"/>
+
+                <TextBlock Text="Start Time (HH:mm)" Foreground="White"/>
+                <TextBox x:Name="txtStartTime"
+                         Margin="0,6,0,15"
+                         Height="35"
+                         Text="09:00"/>
+
+                <TextBlock Text="End Date" Foreground="White"/>
+                <DatePicker x:Name="dpEndDate"
+                            Margin="0,6,0,10"/>
+
+                <TextBlock Text="End Time (HH:mm)" Foreground="White"/>
+                <TextBox x:Name="txtEndTime"
+                         Margin="0,6,0,15"
+                         Height="35"
+                         Text="11:00"/>
+
+                <TextBlock Text="Ticket Price (VND)" Foreground="White"/>
+                <TextBox x:Name="txtTicketPrice"
+                         Margin="0,6,0,15"
+                         Height="35"/>
+
+                <TextBlock Text="Status" Foreground="White"/>
+                <ComboBox x:Name="cbStatus"
+                          Margin="0,6,0,15"
+                          SelectedIndex="0">
+
+                    <ComboBoxItem Content="Scheduled"/>
+                    <ComboBoxItem Content="Cancelled"/>
+                    <ComboBoxItem Content="Completed"/>
+
+                </ComboBox>
+
+            </StackPanel>
+        </ScrollViewer>
+
+        <!-- Buttons -->
+        <StackPanel Grid.Row="2"
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Right"
+                    Margin="0,20,0,0">
+
+            <Button Content="Cancel"
+                    Width="100"
+                    Height="40"
+                    Margin="0,0,10,0"
+                    Background="#302C35"
+                    Foreground="White"
+                    BorderThickness="0"
+                    Click="btnCancel_Click"/>
+
+            <Button Content="Update Showtime"
+                    Width="140"
+                    Height="40"
+                    Background="#D9A441"
+                    Foreground="#101018"
+                    FontWeight="Bold"
+                    BorderThickness="0"
+                    Click="btnUpdateShowtime_Click"/>
+
+        </StackPanel>
+    </Grid>
+</Window>

@@ -11,6 +11,9 @@
     <Compile Update="Views\Admin\AddSeatWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\Admin\AddShowtimeWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\Admin\AdminDashboardWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -23,6 +26,9 @@
     <Compile Update="Views\Admin\EditSeatWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\Admin\EditShowtimeWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\Admin\MoviesWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -30,6 +36,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Views\Admin\SeatsWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\Admin\ShowtimesWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Views\Auth\ForgotPasswordWindow.xaml.cs">
