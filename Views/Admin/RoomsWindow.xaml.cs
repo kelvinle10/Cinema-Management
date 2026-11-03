@@ -140,10 +140,20 @@ namespace CinemaManagementSystem.Views.Admin
             LoadRooms();
         }
 
+
         private void btnManageSeats_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Manage Seats feature is coming soon!");
+            Button? button = sender as Button;
+            if (button?.DataContext == null) return;
+
+            int roomId = (int)button.DataContext.GetType()
+                .GetProperty("RoomId")!.GetValue(button.DataContext)!;
+
+            SeatsWindow seatsWindow = new SeatsWindow(roomId);
+            seatsWindow.Show();
+            this.Close();
         }
+
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {
             AdminDashboardWindow dashboard = new AdminDashboardWindow();

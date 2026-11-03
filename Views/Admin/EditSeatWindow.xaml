@@ -1,0 +1,100 @@
+﻿<Window x:Class="CinemaManagementSystem.Views.Admin.EditSeatWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Add Seat"
+        Height="500" Width="550"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        Background="#101018">
+
+    <Grid Margin="30">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Margin="0,0,0,20">
+            <TextBlock Text="EDIT SEAT"
+                       FontSize="25"
+                       FontWeight="Bold"
+                       Foreground="#D9A441"/>
+
+            <TextBlock x:Name="txtRoomName"
+                       Text="Room"
+                       Foreground="#AAAAAA"
+                       Margin="0,8,0,0"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1">
+            <TextBlock Text="Seat Row"
+                       Foreground="White"
+                       Margin="0,0,0,7"/>
+
+            <TextBox x:Name="txtSeatRow"
+                     Height="38"
+                     Padding="10"
+                     FontSize="14"
+                     Background="#1C1C28"
+                     Foreground="White"
+                     BorderBrush="#444455"
+                     Margin="0,0,0,18"/>
+
+            <TextBlock Text="Seat Number"
+                       Foreground="White"
+                       Margin="0,0,0,7"/>
+
+            <TextBox x:Name="txtSeatNumber"
+                     Height="38"
+                     Padding="10"
+                     FontSize="14"
+                     Background="#1C1C28"
+                     Foreground="White"
+                     BorderBrush="#444455"
+                     Margin="0,0,0,18"/>
+
+            <TextBlock Text="Seat Type"
+                       Foreground="White"
+                       Margin="0,0,0,7"/>
+
+            <TextBox x:Name="txtSeatType"
+                     Height="38"
+                     Padding="10"
+                     FontSize="14"
+                     Background="#1C1C28"
+                     Foreground="White"
+                     BorderBrush="#444455"
+                     Margin="0,0,0,18"/>
+
+            <CheckBox x:Name="chkIsActive"
+                      Content="Active"
+                      IsChecked="True"
+                      Foreground="#D9A441"
+                      FontSize="14"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="2"
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Right"
+                    Margin="0,20,0,0">
+
+            <Button Content="Cancel"
+                    Width="100"
+                    Height="38"
+                    Margin="0,0,10,0"
+                    Background="#252535"
+                    Foreground="White"
+                    BorderThickness="0"
+                    Click="btnCancel_Click"/>
+
+            <Button Content="Save Changes"
+                    Width="110"
+                    Height="38"
+                    Background="#D9A441"
+                    Foreground="#101018"
+                    FontWeight="Bold"
+                    BorderThickness="0"
+                    Click="btnSaveChanges_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>
