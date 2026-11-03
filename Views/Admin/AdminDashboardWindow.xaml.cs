@@ -50,5 +50,11 @@ namespace CinemaManagementSystem.Views.Admin
             moviesWindow.Show();
             this.Close();
         }
+        private void btnRooms_Click(object sender, RoutedEventArgs e)
+        {
+            RoomsWindow roomsWindow = new RoomsWindow();
+            roomsWindow.Show();
+            this.Close();
+        }
     }
 }

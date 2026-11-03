@@ -99,5 +99,11 @@ namespace CinemaManagementSystem.Views.Admin
                 LoadMovies();
             }
         }
+        private void btnBack_Click(object sender, RoutedEventArgs e)
+        {
+            AdminDashboardWindow dashboard = new AdminDashboardWindow();
+            dashboard.Show();
+            this.Close();
+        }
     }
 }

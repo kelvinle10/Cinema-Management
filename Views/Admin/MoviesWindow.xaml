@@ -17,27 +17,46 @@
 
         <!-- Header -->
         <Grid Grid.Row="0" Margin="0,0,0,25">
-            <StackPanel>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Grid.Column="0">
+                <Button Content="← Back to Dashboard"
+                Width="160"
+                Height="35"
+                HorizontalAlignment="Left"
+                Margin="0,0,0,12"
+                Background="#302C25"
+                Foreground="#D9A441"
+                BorderBrush="#D9A441"
+                BorderThickness="1"
+                FontWeight="Bold"
+                Cursor="Hand"
+                Click="btnBack_Click"/>
+
                 <TextBlock Text="Movie Management"
-                           FontSize="28"
-                           FontWeight="Bold"
-                           Foreground="White"/>
+                   FontSize="28"
+                   FontWeight="Bold"
+                   Foreground="White"/>
 
                 <TextBlock Text="Manage movies in your cinema"
-                           FontSize="14"
-                           Foreground="#AAAAAA"
-                           Margin="0,5,0,0"/>
+                   FontSize="14"
+                   Foreground="#AAAAAA"
+                   Margin="0,5,0,0"/>
             </StackPanel>
 
-            <Button Content="+ Add Movie"
-                    Width="130"
-                    Height="40"
-                    HorizontalAlignment="Right"
-                    Background="#D9A441"
-                    Foreground="#101018"
-                    FontWeight="Bold"
-                    BorderThickness="0"
-                    Click="btnAddMovie_Click"/>
+            <Button Grid.Column="1"
+            Content="+ Add Movie"
+            Width="130"
+            Height="40"
+            VerticalAlignment="Bottom"
+            Background="#D9A441"
+            Foreground="#101018"
+            FontWeight="Bold"
+            BorderThickness="0"
+            Click="btnAddMovie_Click"/>
         </Grid>
 
         <!-- Search -->

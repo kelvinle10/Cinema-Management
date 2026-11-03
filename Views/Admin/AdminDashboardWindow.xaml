@@ -71,7 +71,8 @@
                             HorizontalContentAlignment="Left"
                             Padding="15,0"
                             BorderThickness="0"
-                            Margin="0,0,0,8"/>
+                            Margin="0,0,0,8"
+                            Click="btnRooms_Click"/>
 
                     <Button Content="Showtimes"
                             Background="Transparent"
