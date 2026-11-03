@@ -5,6 +5,9 @@
     <Compile Update="Views\Admin\AdminDashboardWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\Auth\ForgotPasswordWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\Auth\LoginWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>

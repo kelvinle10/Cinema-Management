@@ -102,5 +102,11 @@ namespace CinemaManagementSystem.Views.Auth
             registerWindow.Show();
             this.Close();
         }
+        private void ForgotPassword_Click(object sender, MouseButtonEventArgs e)
+        {
+            ForgotPasswordWindow forgotPasswordWindow = new ForgotPasswordWindow();
+            forgotPasswordWindow.Show();
+            this.Close();
+        }
     }
 }

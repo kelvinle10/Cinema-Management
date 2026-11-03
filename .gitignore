@@ -10,3 +10,7 @@ obj/
 
 # Local database configuration containing credentials
 appsettings.json
+
+# Google OAuth credentials and tokens
+Credentials/
+token.json

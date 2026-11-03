@@ -88,7 +88,8 @@
                            Foreground="#D9A441"
                            HorizontalAlignment="Right"
                            Cursor="Hand"
-                           Margin="0,0,0,25"/>
+                           Margin="0,0,0,25"
+                           MouseLeftButtonDown="ForgotPassword_Click"/>
 
                 <Button x:Name="btnLogin"
                         Content="LOGIN"
