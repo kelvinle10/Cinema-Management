@@ -8,6 +8,9 @@
     <Compile Update="Views\Admin\AdminDashboardWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\Admin\EditMovieWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\Admin\MoviesWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>

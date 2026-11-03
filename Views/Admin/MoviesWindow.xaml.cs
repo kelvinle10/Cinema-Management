@@ -43,5 +43,17 @@ namespace CinemaManagementSystem.Views.Admin
                 LoadMovies();
             }
         }
+        private void btnEditMovie_Click(object sender, RoutedEventArgs e)
+        {
+            Button button = sender as Button;
+            Movie selectedMovie = button.DataContext as Movie;
+
+            EditMovieWindow editWindow = new EditMovieWindow(selectedMovie);
+
+            if (editWindow.ShowDialog() == true)
+            {
+                LoadMovies();
+            }
+        }
     }
 }

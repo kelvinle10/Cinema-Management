@@ -141,6 +141,22 @@
                 <DataGridTextColumn Header="Status"
                             Binding="{Binding Status}"
                             Width="120"/>
+                <DataGridTemplateColumn Header="Actions" Width="130">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="Edit"
+                                    Width="65"
+                                    Height="28"
+                                    Background="#D9A441"
+                                    Foreground="#101018"
+                                    FontWeight="Bold"
+                                    BorderThickness="0"
+                                    Cursor="Hand"
+                                    Click="btnEditMovie_Click"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
 
             </DataGrid.Columns>
         </DataGrid>
