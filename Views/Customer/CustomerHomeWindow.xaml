@@ -182,12 +182,11 @@
                     </Border>
 
                     <!-- NOW SHOWING HEADER -->
-                    <Grid Margin="0,0,0,15">
-                        <TextBlock Text="NOW SHOWING"
-                                   Foreground="#D9A441"
-                                   FontSize="21"
-                                   FontWeight="Bold"/>
-                    </Grid>
+                    <TextBlock Text="NOW SHOWING"
+                               Foreground="#D9A441"
+                               FontSize="21"
+                               FontWeight="Bold"
+                               Margin="0,0,0,15"/>
 
                     <!-- NOW SHOWING MOVIES -->
                     <ItemsControl x:Name="icNowShowing"
@@ -229,6 +228,15 @@
                                                    Foreground="#D9A441"
                                                    FontSize="12"
                                                    Margin="0,6,0,0"/>
+
+                                        <Button Content="View Details"
+                                                Height="32"
+                                                Margin="0,10,0,0"
+                                                Background="#D9A441"
+                                                Foreground="#101018"
+                                                FontWeight="Bold"
+                                                BorderThickness="0"
+                                                Click="btnViewDetails_Click"/>
                                     </StackPanel>
                                 </Border>
                             </DataTemplate>
@@ -282,6 +290,15 @@
                                                    Foreground="#D9A441"
                                                    FontSize="12"
                                                    Margin="0,6,0,0"/>
+
+                                        <Button Content="View Details"
+                                                Height="32"
+                                                Margin="0,10,0,0"
+                                                Background="#D9A441"
+                                                Foreground="#101018"
+                                                FontWeight="Bold"
+                                                BorderThickness="0"
+                                                Click="btnViewDetails_Click"/>
                                     </StackPanel>
                                 </Border>
                             </DataTemplate>

@@ -1,16 +1,23 @@
 ﻿
 using CinemaManagementSystem.Models;
 using CinemaManagementSystem.Views.Auth;
+using System;
 using System.Linq;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace CinemaManagementSystem.Views.Customer
 {
     public partial class CustomerHomeWindow : Window
     {
-        public CustomerHomeWindow()
+        private readonly int customerId;
+
+        public CustomerHomeWindow(int customerId)
         {
             InitializeComponent();
+
+            this.customerId = customerId;
+
             LoadMovies();
         }
 
@@ -40,7 +47,7 @@ namespace CinemaManagementSystem.Views.Customer
                 icNowShowing.ItemsSource = nowShowing;
                 icComingSoon.ItemsSource = comingSoon;
 
-                // Featured movie
+                // Featured Movie
                 var featuredMovie = nowShowing.FirstOrDefault()
                                     ?? comingSoon.FirstOrDefault();
 
@@ -51,6 +58,23 @@ namespace CinemaManagementSystem.Views.Customer
             }
         }
 
+        // Open Movie Details
+        private void btnViewDetails_Click(object sender, RoutedEventArgs e)
+        {
+            Button button = (Button)sender;
+            Movie? selectedMovie = button.DataContext as Movie;
+
+            if (selectedMovie != null)
+            {
+                MovieDetailsWindow details =
+                       new MovieDetailsWindow(selectedMovie.MovieId, customerId);
+
+                details.Owner = this;
+                details.ShowDialog();
+            }
+        }
+
+        // Logout
         private void btnLogout_Click(object sender, RoutedEventArgs e)
         {
             LoginWindow login = new LoginWindow();

@@ -82,7 +82,13 @@ namespace CinemaManagementSystem.Views.Auth
                 }
                 else if (account.Role == "Customer")
                 {
-                    nextWindow = new CustomerHomeWindow();
+                    if (account.Customer == null)
+                    {
+                        MessageBox.Show("Customer information not found!");
+                        return;
+                    }
+
+                    nextWindow = new CustomerHomeWindow(account.Customer.CustomerId);
                 }
                 else
                 {
