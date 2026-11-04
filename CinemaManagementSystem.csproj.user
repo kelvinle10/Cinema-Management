@@ -68,6 +68,12 @@
     <Compile Update="Views\Customer\MovieDetailsWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\Customer\MyBookingsWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\Customer\MyProfileWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\Customer\PaymentWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>

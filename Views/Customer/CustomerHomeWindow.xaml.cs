@@ -1,4 +1,5 @@
 ﻿using CinemaManagementSystem.Models;
+using CinemaManagementSystem.Views.Admin;
 using CinemaManagementSystem.Views.Auth;
 using System;
 using System.Linq;
@@ -172,6 +173,18 @@ namespace CinemaManagementSystem.Views.Customer
             login.Show();
 
             Close();
+        }
+        private void btnMyBookings_Click(object sender, RoutedEventArgs e)
+        {
+            MyBookingsWindow window = new MyBookingsWindow(customerId);
+            window.Owner = this;
+            window.ShowDialog();
+        }
+        private void btnMyProfile_Click(object sender, RoutedEventArgs e)
+        {
+            MyProfileWindow window = new MyProfileWindow(customerId);
+            window.Owner = this;
+            window.ShowDialog();
         }
     }
 }
