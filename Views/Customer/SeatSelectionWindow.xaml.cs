@@ -134,14 +134,107 @@ namespace CinemaManagementSystem.Views.Customer
                 return;
             }
 
-            string selectedNames = string.Join(", ",
-                seats.Where(s => selectedSeatIds.Contains(s.SeatId))
-                     .Select(s => s.SeatName));
+            using (DBContext db = new DBContext())
+            using (var transaction = db.Database.BeginTransaction())
+            {
+                // Check showtime
+                var showtime = db.Showtimes
+                    .FirstOrDefault(s => s.ShowtimeId == showtimeId
+                        && s.Status == "Scheduled"
+                        && s.StartTime > DateTime.Now
+                        && s.Room.IsActive);
 
-            MessageBox.Show(
-                $"Selected seats: {selectedNames}\n" +
-                $"Total: {(selectedSeatIds.Count * ticketPrice):N0} VND",
-                "Seat Selection");
+                if (showtime == null)
+                {
+                    MessageBox.Show("This showtime is no longer available!");
+                    LoadSeats();
+                    return;
+                }
+
+                // Check selected seats again
+                bool seatAlreadyBooked = db.Tickets.Any(t =>
+                    t.ShowtimeId == showtimeId &&
+                    selectedSeatIds.Contains(t.SeatId));
+
+                if (seatAlreadyBooked)
+                {
+                    MessageBox.Show(
+                        "Some selected seats are no longer available. Please select again!");
+
+                    LoadSeats();
+                    return;
+                }
+
+                // Check seats belong to this room and are active
+                int validSeatCount = db.Seats.Count(s =>
+                    selectedSeatIds.Contains(s.SeatId) &&
+                    s.RoomId == showtime.RoomId &&
+                    s.IsActive);
+
+                if (validSeatCount != selectedSeatIds.Count)
+                {
+                    MessageBox.Show("Some selected seats are invalid!");
+                    LoadSeats();
+                    return;
+                }
+
+                decimal totalAmount = selectedSeatIds.Count * showtime.TicketPrice;
+
+                // Create Booking
+                Booking booking = new Booking
+                {
+                    BookingCode = "BK" + Guid.NewGuid().ToString("N").Substring(0, 12),
+                    CustomerId = customerId,
+                    ShowtimeId = showtimeId,
+                    BookingTime = DateTime.Now,
+                    TotalAmount = totalAmount,
+                    Status = "Pending"
+                };
+
+                db.Bookings.Add(booking);
+                db.SaveChanges();
+
+                // Create Tickets
+                foreach (int seatId in selectedSeatIds)
+                {
+                    Ticket ticket = new Ticket
+                    {
+                        TicketCode = "TK" + Guid.NewGuid().ToString("N").Substring(0, 16),
+                        BookingId = booking.BookingId,
+                        ShowtimeId = showtimeId,
+                        SeatId = seatId,
+                        Price = showtime.TicketPrice,
+                        Status = "Reserved",
+                        CreatedAt = DateTime.Now
+                    };
+
+                    db.Tickets.Add(ticket);
+                }
+
+                // Create Payment
+                Payment payment = new Payment
+                {
+                    BookingId = booking.BookingId,
+                    Amount = totalAmount,
+                    Method = "Demo",
+                    Status = "Pending",
+                    TransactionCode = "TXN" + Guid.NewGuid().ToString("N"),
+                    PaymentTime = null
+                };
+
+                db.Payments.Add(payment);
+
+                db.SaveChanges();
+                transaction.Commit();
+
+                PaymentWindow paymentWindow = new PaymentWindow(booking.BookingId);
+                paymentWindow.Owner = this;
+                paymentWindow.ShowDialog();
+
+                Close();
+
+                Close();
+            }
         }
 
         public class SeatItem
