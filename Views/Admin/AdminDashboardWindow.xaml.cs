@@ -63,5 +63,11 @@ namespace CinemaManagementSystem.Views.Admin
             showtimesWindow.Show();
             this.Close();
         }
+        private void btnBookings_Click(object sender, RoutedEventArgs e)
+        {
+            BookingsWindow bookingsWindow = new BookingsWindow();
+            bookingsWindow.Show();
+            this.Close();
+        }
     }
 }
