@@ -23,6 +23,9 @@
     <Compile Update="Views\Admin\BookingWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\Admin\CustomersWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\Admin\EditMovieWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
