@@ -13,22 +13,50 @@ namespace CinemaManagementSystem.Views.Admin
             LoadDashboardData();
         }
 
+
         private void LoadDashboardData()
         {
             using (DBContext db = new DBContext())
             {
-                txtTotalMovies.Text = db.Movies.Count().ToString();
-                txtTotalCustomers.Text = db.Customers.Count().ToString();
-                txtTotalBookings.Text = db.Bookings.Count().ToString();
-                txtTotalRooms.Text = db.Rooms.Count().ToString();
+                // Count total records
+                int totalMovies = db.Movies.Count();
+                int totalCustomers = db.Customers.Count();
+                int totalBookings = db.Bookings.Count();
+                int totalRooms = db.Rooms.Count();
 
+                // Calculate total revenue
                 decimal totalRevenue = db.Payments
-                    .Where(p => p.Status == "Success")
+                    .Where(p => p.Status == "Paid")
                     .Sum(p => (decimal?)p.Amount) ?? 0;
 
+                // Count bookings by status
+                int pendingBookings = db.Bookings
+                    .Count(b => b.Status == "Pending");
+
+                int confirmedBookings = db.Bookings
+                    .Count(b => b.Status == "Confirmed");
+
+                int cancelledBookings = db.Bookings
+                    .Count(b => b.Status == "Cancelled");
+
+                int expiredBookings = db.Bookings
+                    .Count(b => b.Status == "Expired");
+
+                // Display general statistics
+                txtTotalMovies.Text = totalMovies.ToString();
+                txtTotalCustomers.Text = totalCustomers.ToString();
+                txtTotalBookings.Text = totalBookings.ToString();
+                txtTotalRooms.Text = totalRooms.ToString();
                 txtTotalRevenue.Text = totalRevenue.ToString("N0") + " VND";
+
+                // Display booking statistics
+                txtPendingBookings.Text = pendingBookings.ToString();
+                txtConfirmedBookings.Text = confirmedBookings.ToString();
+                txtCancelledBookings.Text = cancelledBookings.ToString();
+                txtExpiredBookings.Text = expiredBookings.ToString();
             }
         }
+
         private void btnLogout_Click(object sender, RoutedEventArgs e)
         {
             MessageBoxResult result = MessageBox.Show(

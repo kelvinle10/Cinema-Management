@@ -15,9 +15,7 @@
         </Grid.ColumnDefinitions>
 
         <!-- Sidebar -->
-        <Border Grid.Column="0"
-                Background="#1C1C28">
-
+        <Border Grid.Column="0" Background="#1C1C28">
             <DockPanel>
 
                 <!-- Logo -->
@@ -115,7 +113,6 @@
                             Click="btnReports_Click"/>
 
                 </StackPanel>
-
             </DockPanel>
         </Border>
 
@@ -145,27 +142,27 @@
                 </StackPanel>
 
                 <StackPanel HorizontalAlignment="Right"
-            VerticalAlignment="Center">
+                            VerticalAlignment="Center">
 
                     <TextBlock Text="ADMIN"
-               Foreground="#D9A441"
-               FontWeight="Bold"
-               HorizontalAlignment="Right"/>
+                               Foreground="#D9A441"
+                               FontWeight="Bold"
+                               HorizontalAlignment="Right"/>
 
                     <TextBlock Text="Administrator"
-               Foreground="#AAAAAA"
-               FontSize="12"
-               Margin="0,5,0,8"
-               HorizontalAlignment="Right"/>
+                               Foreground="#AAAAAA"
+                               FontSize="12"
+                               Margin="0,5,0,8"
+                               HorizontalAlignment="Right"/>
 
                     <Button Content="Logout"
-            Width="90"
-            Height="30"
-            Background="#30232A"
-            Foreground="#E57373"
-            BorderThickness="0"
-            Cursor="Hand"
-            Click="btnLogout_Click"/>
+                            Width="90"
+                            Height="30"
+                            Background="#30232A"
+                            Foreground="#E57373"
+                            BorderThickness="0"
+                            Cursor="Hand"
+                            Click="btnLogout_Click"/>
 
                 </StackPanel>
             </Grid>
@@ -179,14 +176,13 @@
                         CornerRadius="12"
                         Padding="20"
                         Margin="0,0,15,0">
-
                     <StackPanel>
                         <TextBlock Text="TOTAL MOVIES"
                                    Foreground="#AAAAAA"
                                    FontSize="12"/>
 
-                        <TextBlock Text="--"
-                                   x:Name="txtTotalMovies"
+                        <TextBlock x:Name="txtTotalMovies"
+                                   Text="--"
                                    Foreground="#D9A441"
                                    FontSize="30"
                                    FontWeight="Bold"
@@ -198,7 +194,6 @@
                         CornerRadius="12"
                         Padding="20"
                         Margin="0,0,15,0">
-
                     <StackPanel>
                         <TextBlock Text="TOTAL CUSTOMERS"
                                    Foreground="#AAAAAA"
@@ -217,14 +212,13 @@
                         CornerRadius="12"
                         Padding="20"
                         Margin="0,0,15,0">
-
                     <StackPanel>
                         <TextBlock Text="TOTAL BOOKINGS"
                                    Foreground="#AAAAAA"
                                    FontSize="12"/>
 
-                        <TextBlock Text="--"
-                                   x:Name="txtTotalBookings"
+                        <TextBlock x:Name="txtTotalBookings"
+                                   Text="--"
                                    Foreground="#D9A441"
                                    FontSize="30"
                                    FontWeight="Bold"
@@ -235,14 +229,13 @@
                 <Border Background="#1C1C28"
                         CornerRadius="12"
                         Padding="20">
-
                     <StackPanel>
                         <TextBlock Text="TOTAL ROOMS"
                                    Foreground="#AAAAAA"
                                    FontSize="12"/>
 
-                        <TextBlock Text="--"
-                                   x:Name="txtTotalRooms"
+                        <TextBlock x:Name="txtTotalRooms"
+                                   Text="--"
                                    Foreground="#D9A441"
                                    FontSize="30"
                                    FontWeight="Bold"
@@ -264,8 +257,8 @@
                                Foreground="#AAAAAA"
                                FontSize="13"/>
 
-                    <TextBlock Text="-- VND"
-                               x:Name="txtTotalRevenue"
+                    <TextBlock x:Name="txtTotalRevenue"
+                               Text="-- VND"
                                Foreground="#D9A441"
                                FontSize="32"
                                FontWeight="Bold"
@@ -273,28 +266,125 @@
                 </StackPanel>
             </Border>
 
-            <!-- Bottom Content -->
-            <Grid Grid.Row="3">
+            <!-- Cinema Overview -->
+            <Border Grid.Row="3"
+                    Background="#1C1C28"
+                    CornerRadius="12"
+                    Padding="25">
 
-                <Border Background="#1C1C28"
-                        CornerRadius="12"
-                        Padding="25">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
 
-                    <StackPanel>
+                    <!-- Section Header -->
+                    <StackPanel Grid.Row="0"
+                                Margin="0,0,0,20">
+
                         <TextBlock Text="Cinema Overview"
                                    FontSize="20"
                                    FontWeight="Bold"
                                    Foreground="White"/>
 
-                        <TextBlock Text="Your cinema statistics will appear here."
+                        <TextBlock Text="Booking statistics by status"
                                    Foreground="#AAAAAA"
-                                   FontSize="14"
-                                   Margin="0,15,0,0"/>
+                                   FontSize="13"
+                                   Margin="0,5,0,0"/>
                     </StackPanel>
 
-                </Border>
+                    <!-- Booking Status Cards -->
+                    <UniformGrid Grid.Row="1"
+                                 Columns="4"
+                                 Rows="1">
 
-            </Grid>
+                        <!-- Pending -->
+                        <Border Background="#30291C"
+                                CornerRadius="10"
+                                Margin="5"
+                                Padding="20">
+
+                            <StackPanel VerticalAlignment="Center">
+                                <TextBlock Text="PENDING"
+                                           FontSize="13"
+                                           FontWeight="SemiBold"
+                                           Foreground="#E5B94C"/>
+
+                                <TextBlock x:Name="txtPendingBookings"
+                                           Text="0"
+                                           FontSize="36"
+                                           FontWeight="Bold"
+                                           Foreground="#E5B94C"
+                                           Margin="0,12,0,0"/>
+                            </StackPanel>
+                        </Border>
+
+                        <!-- Confirmed -->
+                        <Border Background="#1C3028"
+                                CornerRadius="10"
+                                Margin="5"
+                                Padding="20">
+
+                            <StackPanel VerticalAlignment="Center">
+                                <TextBlock Text="CONFIRMED"
+                                           FontSize="13"
+                                           FontWeight="SemiBold"
+                                           Foreground="#55C98A"/>
+
+                                <TextBlock x:Name="txtConfirmedBookings"
+                                           Text="0"
+                                           FontSize="36"
+                                           FontWeight="Bold"
+                                           Foreground="#55C98A"
+                                           Margin="0,12,0,0"/>
+                            </StackPanel>
+                        </Border>
+
+                        <!-- Cancelled -->
+                        <Border Background="#351F24"
+                                CornerRadius="10"
+                                Margin="5"
+                                Padding="20">
+
+                            <StackPanel VerticalAlignment="Center">
+                                <TextBlock Text="CANCELLED"
+                                           FontSize="13"
+                                           FontWeight="SemiBold"
+                                           Foreground="#E36B75"/>
+
+                                <TextBlock x:Name="txtCancelledBookings"
+                                           Text="0"
+                                           FontSize="36"
+                                           FontWeight="Bold"
+                                           Foreground="#E36B75"
+                                           Margin="0,12,0,0"/>
+                            </StackPanel>
+                        </Border>
+
+                        <!-- Expired -->
+                        <Border Background="#292936"
+                                CornerRadius="10"
+                                Margin="5"
+                                Padding="20">
+
+                            <StackPanel VerticalAlignment="Center">
+                                <TextBlock Text="EXPIRED"
+                                           FontSize="13"
+                                           FontWeight="SemiBold"
+                                           Foreground="#A5A5B8"/>
+
+                                <TextBlock x:Name="txtExpiredBookings"
+                                           Text="0"
+                                           FontSize="36"
+                                           FontWeight="Bold"
+                                           Foreground="#A5A5B8"
+                                           Margin="0,12,0,0"/>
+                            </StackPanel>
+                        </Border>
+
+                    </UniformGrid>
+                </Grid>
+            </Border>
 
         </Grid>
     </Grid>
