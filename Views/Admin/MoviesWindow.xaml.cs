@@ -13,6 +13,7 @@ namespace CinemaManagementSystem.Views.Admin
             LoadMovies();
         }
 
+        
         private void LoadMovies()
         {
             using (DBContext db = new DBContext())
@@ -103,6 +104,13 @@ namespace CinemaManagementSystem.Views.Admin
         {
             AdminDashboardWindow dashboard = new AdminDashboardWindow();
             dashboard.Show();
+            this.Close();
+        }
+
+        private void btnGenre_Click(object sender, RoutedEventArgs e)
+        {
+            GenreWindow genre = new GenreWindow();
+            genre.Show();
             this.Close();
         }
     }

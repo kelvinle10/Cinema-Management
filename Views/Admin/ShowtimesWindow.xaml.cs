@@ -144,6 +144,5 @@ namespace CinemaManagementSystem.Views.Admin
             MessageBox.Show("Showtime deleted successfully!");
             LoadShowtimes();
         }
-
     }
 }

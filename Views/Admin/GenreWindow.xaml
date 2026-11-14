@@ -1,0 +1,25 @@
+﻿<Window x:Class="CinemaManagementSystem.Views.Admin.GenreWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="GenreWindow"
+        Height="450"
+        Width="800">
+
+    <Grid>
+        <DataGrid x:Name="dgGenre"
+                  AutoGenerateColumns="False"
+                  IsReadOnly="True">
+
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Genre"
+                                    Binding="{Binding Genre}"
+                                    Width="*"/>
+
+                <DataGridTextColumn Header="Total Movies"
+                                    Binding="{Binding TotalMovies}"
+                                    Width="*"/>
+            </DataGrid.Columns>
+
+        </DataGrid>
+    </Grid>
+</Window>
