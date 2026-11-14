@@ -65,7 +65,7 @@ namespace CinemaManagementSystem.Views.Auth
                     MessageBox.Show("Incorrect password!");
                     return;
                 }
-
+                
                 // Check account status
                 if (!account.IsActive)
                 {

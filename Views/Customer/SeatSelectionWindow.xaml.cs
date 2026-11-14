@@ -1,4 +1,4 @@
-﻿using CinemaManagementSystem.Models;
+using CinemaManagementSystem.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -229,11 +229,18 @@ namespace CinemaManagementSystem.Views.Customer
 
                 PaymentWindow paymentWindow = new PaymentWindow(booking.BookingId);
                 paymentWindow.Owner = this;
-                paymentWindow.ShowDialog();
+                bool? result = paymentWindow.ShowDialog();
 
-                Close();
-
-                Close();
+                if (result == true)
+                {
+                    Close();
+                }
+                else
+                {
+                    LoadSeats();
+                    selectedSeatIds.Clear();
+                    UpdateTotalPrice();
+                }
             }
         }
 

@@ -1,4 +1,4 @@
-﻿<Window x:Class="CinemaManagementSystem.Views.Admin.AddMovieWindow"
+<Window x:Class="CinemaManagementSystem.Views.Admin.AddMovieWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Add Movie"
@@ -214,7 +214,7 @@
                           SelectedIndex="0">
 
                     <ComboBoxItem Content="Upcoming"/>
-                    <ComboBoxItem Content="Showing"/>
+                    <ComboBoxItem Content="NowShowing"/>
                     <ComboBoxItem Content="Ended"/>
 
                 </ComboBox>

@@ -1,4 +1,3 @@
-﻿
 using CinemaManagementSystem.Models;
 using System;
 using System.Linq;
@@ -36,10 +35,22 @@ namespace CinemaManagementSystem.Views.Customer
                     return;
                 }
 
-                imgPoster.Source = !string.IsNullOrEmpty(movie.PosterUrl)
-                    ? new System.Windows.Media.Imaging.BitmapImage(
-                        new Uri(movie.PosterUrl))
-                    : null;
+                if (!string.IsNullOrEmpty(movie.PosterUrl) &&
+                    Uri.TryCreate(movie.PosterUrl, UriKind.Absolute, out Uri? posterUri))
+                {
+                    try
+                    {
+                        imgPoster.Source = new System.Windows.Media.Imaging.BitmapImage(posterUri);
+                    }
+                    catch
+                    {
+                        imgPoster.Source = null;
+                    }
+                }
+                else
+                {
+                    imgPoster.Source = null;
+                }
 
                 txtTitle.Text = movie.Title;
                 txtGenre.Text = movie.Genre ?? "Unknown Genre";
@@ -58,7 +69,10 @@ namespace CinemaManagementSystem.Views.Customer
             using (DBContext db = new DBContext())
             {
                 var showtimes = db.Showtimes
-                    .Where(s => s.MovieId == movieId)
+                    .Where(s => s.MovieId == movieId
+                        && s.StartTime > DateTime.Now
+                        && s.Status == "Scheduled"
+                        && s.Room.IsActive)
                     .OrderBy(s => s.StartTime)
                     .Select(s => new
                     {

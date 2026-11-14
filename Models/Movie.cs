@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
 namespace CinemaManagementSystem.Models;
@@ -30,4 +30,6 @@ public partial class Movie
     public DateTime CreatedAt { get; set; }
 
     public virtual ICollection<Showtime> Showtimes { get; set; } = new List<Showtime>();
+
+    public override string ToString() => Title;
 }

@@ -1,4 +1,3 @@
-﻿
 using CinemaManagementSystem.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -127,12 +126,59 @@ namespace CinemaManagementSystem.Views.Customer
                 MessageBoxButton.OK,
                 MessageBoxImage.Information);
 
+            this.DialogResult = true;
             Close();
+        }
+
+        private void CancelPendingBooking()
+        {
+            try
+            {
+                using (DBContext db = new DBContext())
+                {
+                    var booking = db.Bookings
+                        .Include(b => b.Payment)
+                        .Include(b => b.Tickets)
+                        .FirstOrDefault(b => b.BookingId == bookingId);
+
+                    if (booking != null && booking.Status == "Pending")
+                    {
+                        booking.Status = "Cancelled";
+
+                        if (booking.Payment != null && booking.Payment.Status == "Pending")
+                        {
+                            booking.Payment.Status = "Failed";
+                        }
+
+                        foreach (Ticket ticket in booking.Tickets)
+                        {
+                            ticket.Status = "Cancelled";
+                        }
+
+                        db.SaveChanges();
+                    }
+                }
+            }
+            catch
+            {
+                // Ignore any error during cancellation
+            }
         }
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
+            CancelPendingBooking();
+            this.DialogResult = false;
             Close();
+        }
+
+        protected override void OnClosing(System.ComponentModel.CancelEventArgs e)
+        {
+            base.OnClosing(e);
+            if (this.DialogResult != true)
+            {
+                CancelPendingBooking();
+            }
         }
     }
 }

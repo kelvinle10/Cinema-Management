@@ -1,4 +1,4 @@
-﻿
+
 using CinemaManagementSystem.Models;
 using System;
 using System.Globalization;
@@ -25,10 +25,9 @@ namespace CinemaManagementSystem.Views.Admin
             using (DBContext db = new DBContext())
             {
                 cbMovie.ItemsSource = db.Movies
-                    .Where(m => m.Status == "Showing")
+                    .Where(m => m.Status == "NowShowing" || m.Status == "Showing")
                     .ToList();
 
-                cbMovie.DisplayMemberPath = "Title";
                 cbMovie.SelectedValuePath = "MovieId";
             }
         }
@@ -41,7 +40,6 @@ namespace CinemaManagementSystem.Views.Admin
                     .Where(r => r.IsActive)
                     .ToList();
 
-                cbRoom.DisplayMemberPath = "RoomName";
                 cbRoom.SelectedValuePath = "RoomId";
             }
         }

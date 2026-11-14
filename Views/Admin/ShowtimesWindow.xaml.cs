@@ -32,7 +32,7 @@ namespace CinemaManagementSystem.Views.Admin
                     .ToList();
             }
         }
-
+        
         private void txtSearch_TextChanged(object sender, TextChangedEventArgs e)
         {
             string keyword = txtSearch.Text.Trim().ToLower();

@@ -1,4 +1,4 @@
-﻿using CinemaManagementSystem.Models;
+using CinemaManagementSystem.Models;
 using CinemaManagementSystem.Views.Admin;
 using CinemaManagementSystem.Views.Auth;
 using System;
@@ -34,7 +34,7 @@ namespace CinemaManagementSystem.Views.Customer
                     .Select(m => m.Genre)
                     .ToList()
                     .Where(g => !string.IsNullOrWhiteSpace(g))
-                    .SelectMany(g => g.Split(',', StringSplitOptions.RemoveEmptyEntries))
+                    .SelectMany(g => g!.Split(',', StringSplitOptions.RemoveEmptyEntries))
                     .Select(g => g.Trim())
                     .Distinct(StringComparer.OrdinalIgnoreCase)
                     .OrderBy(g => g)
@@ -69,9 +69,9 @@ namespace CinemaManagementSystem.Views.Customer
                                 keyword,
                                 StringComparison.OrdinalIgnoreCase)
                             ||
-                            m.Genre.Contains(
+                            (!string.IsNullOrEmpty(m.Genre) && m.Genre.Contains(
                                 keyword,
-                                StringComparison.OrdinalIgnoreCase))
+                                StringComparison.OrdinalIgnoreCase)))
                         .ToList();
                 }
 
@@ -82,7 +82,7 @@ namespace CinemaManagementSystem.Views.Customer
                 if (selectedGenre != "All Genres")
                 {
                     movies = movies
-                        .Where(m => m.Genre
+                        .Where(m => !string.IsNullOrEmpty(m.Genre) && m.Genre
                             .Split(',', StringSplitOptions.RemoveEmptyEntries)
                             .Any(g => g.Trim().Equals(
                                 selectedGenre,
